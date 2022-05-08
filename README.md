@@ -33,7 +33,7 @@ GNSS(GPS)より得られる位置情報や走行速度情報をCSVファイル�
     * [エレコム モバイルバッテリー[EC-M01WH]](https://www.elecom.co.jp/products/EC-M01WH.html) 1個
     * Seria 3A Type-C L字充電ケーブル 70cm 1個
 * 筐体部品等
-    * ダイソー スマホホルダー(自転車用，タッチ操作可能)
+    * ダイソー スマホホルダー(自転車用，タッチ操作可能) 1個
     * [ダイソー ポール(39cm，白)](https://jp.daisonet.com/products/4549131727975?_pos=8&_sid=3f94a06ba&_ss=r) 1個
     * [ダイソー マグネット補助プレート(粘着，2枚)](https://jp.daisonet.com/products/4550480032818?_pos=161&_sid=c878fe25d&_ss=r) 1個
     * [ダイソー 繰り返し使える抗菌結束バンド(白，15cm，15本)](https://jp.daisonet.com/products/4549131993233?_pos=30&_sid=32464de24&_ss=r) 4個
