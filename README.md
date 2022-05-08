@@ -8,8 +8,7 @@
 # DEMO
 交差点・立ち寄り場所を[QGIS](https://qgis.org/ja/site/index.html)で可視化  
 
-<img src="./img/map1.png" height="320px"> 
-<img src="./img/map2.png" height="320px">  
+<img src="./img/map1.png" height="320px"> <img src="./img/map2.png" height="320px">  
 
 順次アップデート予定です．  
 
