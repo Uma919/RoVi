@@ -1,16 +1,22 @@
 # MMS-Cycle
 本リポジトリは簡易路面計測車両の開発リポジトリです．  
 自転車走行による段差等の地理空間情報の収集を目的としています．  
+計測範囲を拡大してデータの充実を図る等，順次アップデート予定です．  
+なお，本コンテンツを利用して生じた損害について一切保証いたしかねます．  
+予めご了承いただきますようお願い申し上げます．
 
 <img src="./img/system.jpg" height="320px">  
 
 
 # DEMO
-[QGIS](https://qgis.org/ja/site/index.html)を用いた段差マップの表示  
+## Foliumを用いた段差マップ
+段差マップはHTMLファイルとして出力されるため，ブラウザ上での閲覧が可能です．  
+[コチラ](https://uma919.github.io/MMS-Cycle-Demo/)でご覧いただけます．
+
+## QGISを用いた段差マップ  
+出力された[CSVファイル](./src/DataEditor/output/output.csv)を[QGIS](https://qgis.org/ja/site/index.html)により可視化することが可能です．  
 <img src="./img/gyro1.png" width="500px">  
 <img src="./img/gyro2.png" width="500px">   
-
-順次アップデート予定です．  
 
 
 # S/W
@@ -19,8 +25,9 @@
 * [M5Stack Library](https://github.com/m5stack/M5Stack)
 * [TinyGPS++](http://arduiniana.org/libraries/tinygpsplus/)
 ### Python
+* [Folium](https://python-visualization.github.io/folium/)
 
-## Data Logger プログラム (Arduino)
+## Data Logger (Arduino)
 GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐次(0.1秒毎)書き込みます．  
 下記のプログラムはM5Stack社の[サンプルプログラム](https://github.com/m5stack/M5Stack/blob/master/examples/Modules/GPS_NEO_M8N/FullExample/FullExample.ino)を参考にしております．  
 * [ソースプログラム](./src/DataLogger/main/main.ino)  
@@ -30,14 +37,14 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 
 ※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)を参照ください．
 
-## Data Editor プログラム (Python)
-上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回の計測データを一つのCSVファイルとして統合します．加えて，ブラウザ上での段差マップの閲覧を目的として，foliumライブラリを活用したHTMLファイルの自動作成機能を実装予定です．  
+## Data Editor (Python)
+上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回の計測データを一つのCSVファイルとして統合します．加えて，ブラウザ上での段差マップの閲覧を目的として，Foliumライブラリを活用したHTMLファイルの自動作成機能を実装予定です．  
 * [ソースプログラム](./src/DataLogger/main/main.ino) 
 * 出力ファイル例
     * [CSVファイル](./src/DataEditor/output/output.csv)  
     * HTMLファイル(予定)
 
-## Data Viewer プログラム (Python)
+## Data Viewer (Python)
 段差マップの閲覧のみを目的としたプログラムです(開発中)．  
 
 # H/W
