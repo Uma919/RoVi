@@ -44,7 +44,7 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
     * [M5Stack Gray](https://www.switch-science.com/catalog/3648/) 1個
     * [M5Stack用GPSモジュール V2](https://www.switch-science.com/catalog/3861/) 1個
     * 東芝 Micro SDカード 8GB 1個
-    * [エレコム モバイルバッテリー[EC-M01WH]](https://www.elecom.co.jp/products/EC-M01WH.html) 1個
+    * [cheero Canvas 3200mAh IoT 機器対応](https://cheero.shop/products/che-061) 1個 1個
     * Seria 3A Type-C L字充電ケーブル 70cm 1個
 * 筐体部品等
     * ダイソー スマホホルダー(自転車用，タッチ操作可能) 1個
