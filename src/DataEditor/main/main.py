@@ -1,6 +1,8 @@
 import os
 import csv
 import glob
+import folium
+from folium.plugins import HeatMap
 
 def getPath(rlapath):
     dire = os.path.dirname(os.path.abspath(__file__))
@@ -9,13 +11,13 @@ def getPath(rlapath):
 
 if __name__ == '__main__':
     # 出力用CSV作成 #
-    output_file_path = getPath('../output/output.csv')
-    with open(output_file_path, 'w', newline="") as f:
+    output_csv_path = getPath('../output/output.csv')
+    with open(output_csv_path, 'w', newline="") as f:
         writer = csv.writer(f)
         writer.writerow(['Sats[-]', 'Lng[deg]', 'Lat[deg]', 'Alt[m]', 'Speed[km/h]', 'Course[deg]', 'AccX', 'AccY', 'AccZ', 'GyroX', 'GyroY', 'GyroZ'])
 
-    input_files_path = getPath('../input/*.csv')
-    csv_files = glob.glob(input_files_path) #入力フォルダ内ファイルパスの取得
+    input_csv_path = getPath('../input/*.csv')
+    csv_files = glob.glob(input_csv_path) #入力フォルダ内ファイルパスの取得
     for csv_file in csv_files:
         loc_lst = []
 
@@ -31,7 +33,7 @@ if __name__ == '__main__':
                     loc_lst.append([r[1:3], [r]])
 
         # 内挿と出力用CSV書込み #
-        with open(output_file_path, 'a', newline="") as f:
+        with open(output_csv_path, 'a', newline="") as f:
             writer = csv.writer(f)
             idx_end = len(loc_lst) - 1
             for i, l in enumerate(loc_lst):
@@ -53,3 +55,16 @@ if __name__ == '__main__':
                             e[2] = y
                             writer.writerow(e)
     
+    # 段差マップファイル作成 #
+    output_html_path = getPath('../output/index.html')
+    with open(output_csv_path) as f:
+        reader = csv.reader(f)
+        header = next(reader)
+        map_pnt = [[float(r[2]), float(r[1]), abs(float(r[9]))] for r in reader if abs(float(r[9])) >= 130]
+        map = folium.Map(location=[33.8669161, 130.7669116], zoom_start=11)
+        HeatMap(map_pnt, 
+                min_opacity=0.5, 
+                radius=3, 
+                blur=4, 
+                gradient={0.2:'blue', 0.4:'lime', 0.6:'yellow', 0.8:'red'}).add_to(map)
+        map.save(output_html_path)
