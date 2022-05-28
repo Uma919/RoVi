@@ -15,15 +15,17 @@
 
 # S/W
 ## Requirement
+### Arduino
 * [M5Stack Library](https://github.com/m5stack/M5Stack)
 * [TinyGPS++](http://arduiniana.org/libraries/tinygpsplus/)
+### Python
 
 ## Data Logger プログラム (Arduino)
 GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐次(0.1秒毎)書き込みます．  
 下記のプログラムはM5Stack社の[サンプルプログラム](https://github.com/m5stack/M5Stack/blob/master/examples/Modules/GPS_NEO_M8N/FullExample/FullExample.ino)を参考にしております．  
 * [ソースプログラム](./src/DataLogger/main/main.ino)  
 * 出力ファイル例    
-    * [北九州洞海湾](./src/DataEditor/input/data_20220515.csv)
+    * [北九州 洞海湾](./src/DataEditor/input/data_20220515.csv)
     * [北九州市八幡西区～戸畑区～門司区](./src/DataEditor/input/data_20220522.csv)  
 
 ※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)を参照ください．
