@@ -1,9 +1,20 @@
+#define M5STACK_MPU6886 
 #include <M5Stack.h>
 #include <Ticker.h>
 #include <TinyGPS++.h>
 
 TinyGPSPlus gps;
 Ticker tk;
+
+
+float accX = 0.0F;
+float accY = 0.0F;
+float accZ = 0.0F;
+float gyroX = 0.0F;
+float gyroY = 0.0F;
+float gyroZ = 0.0F;
+
+
 char gps_data[100];
 static const uint32_t GPSBaud = 9600;
 HardwareSerial ss(2);
@@ -13,7 +24,7 @@ HardwareSerial ss(2);
 void onTimer(){
   if (gps.location.isValid()){
     File file = SD.open("/data.csv", FILE_APPEND);
-    sprintf(gps_data, "%d,%f,%f,%f,%f,%f\n", gps.satellites.value(), gps.location.lat(), gps.location.lng(), gps.altitude.meters(), gps.speed.kmph(), gps.course.deg());
+    sprintf(gps_data, "%d,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f\n", gps.satellites.value(), gps.location.lat(), gps.location.lng(), gps.altitude.meters(), gps.speed.kmph(), gps.course.deg(), accX, accY, accZ, gyroX, gyroY, gyroZ);
     file.print(gps_data);
     file.close(); 
   }
@@ -21,10 +32,11 @@ void onTimer(){
 
 void setup(){
   M5.begin();
+  M5.IMU.Init();
   ss.begin(GPSBaud);
   
   /* タイマー割込み処理 */
-  tk.attach_ms(10000, onTimer);
+  tk.attach_ms(100, onTimer);
   
   /* 衛星受信機数 */
   M5.Lcd.setCursor(20, 40, 2);
@@ -46,6 +58,12 @@ void setup(){
 }
 
 void loop(){
+  M5.update();
+  
+  /* 姿勢角 */
+  M5.IMU.getAccelData(&accX,&accY,&accZ);
+  M5.IMU.getGyroData(&gyroX,&gyroY,&gyroZ);
+  
   /* 時刻 */
   M5.Lcd.setCursor(20, 20, 2);
   printDateTime(gps.date, gps.time);
@@ -74,7 +92,7 @@ void loop(){
   printFloat(gps.course.deg(), gps.course.isValid(), 7, 2);
   M5.Lcd.println();
   
-  smartDelay(1000);
+  smartDelay(100);
   if (millis() > 5000 && gps.charsProcessed() < 10)
     M5.Lcd.println(F("No GPS data received: check wiring"));
 }

@@ -2,13 +2,13 @@
 本リポジトリは簡易路面計測車両の開発リポジトリです．  
 自転車走行による段差等の地理空間情報の収集を目的としています．  
 
-<img src="./img/system.jpg" width="320px">  
+<img src="./img/system.jpg" height="320px">  
 
 
 # DEMO
-交差点・立ち寄り場所を[QGIS](https://qgis.org/ja/site/index.html)で可視化  
-
-<img src="./img/map1.png" height="320px"> <img src="./img/map2.png" height="320px">  
+[QGIS](https://qgis.org/ja/site/index.html)を用いた段差マップの表示  
+<img src="./img/gyro1.png" width="500px">  
+<img src="./img/gyro2.png" width="500px">   
 
 順次アップデート予定です．  
 
@@ -18,11 +18,25 @@
 * [M5Stack Library](https://github.com/m5stack/M5Stack)
 * [TinyGPS++](http://arduiniana.org/libraries/tinygpsplus/)
 
-## Example
-GNSS(GPS)より得られる位置情報や走行速度情報をCSVファイルに逐次(10秒毎)書き込みます．  
+## Data Logger プログラム (Arduino)
+GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐次(0.1秒毎)書き込みます．  
 下記のプログラムはM5Stack社の[サンプルプログラム](https://github.com/m5stack/M5Stack/blob/master/examples/Modules/GPS_NEO_M8N/FullExample/FullExample.ino)を参考にしております．  
-[GPS Data Logger](./src/DataLogger/main/main.ino)  
+* [ソースプログラム](./src/DataLogger/main/main.ino)  
+* 出力ファイル例    
+    * [北九州洞海湾](./src/DataEditor/input/data_20220515.csv)
+    * [北九州市八幡西区～戸畑区～門司区](./src/DataEditor/input/data_20220522.csv)  
 
+※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)を参照ください．
+
+## Data Editor プログラム (Python)
+上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回の計測データを一つのCSVファイルとして統合します．加えて，ブラウザ上での段差マップの閲覧を目的として，foliumライブラリを活用したHTMLファイルの自動作成機能を実装予定です．  
+* [ソースプログラム](./src/DataLogger/main/main.ino) 
+* 出力ファイル例
+    * [CSVファイル](./src/DataEditor/output/output.csv)  
+    * HTMLファイル(予定)
+
+## Data Viewer プログラム (Python)
+段差マップの閲覧のみを目的としたプログラムです(開発中)．  
 
 # H/W
 ## Parts List
