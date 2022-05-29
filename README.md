@@ -5,7 +5,7 @@
 なお，本コンテンツを利用して生じた損害について一切保証いたしかねます．  
 予めご了承いただきますようお願い申し上げます．
 
-<img src="./img/system.jpg" height="320px">  
+<img src="./img/system1.jpg" height="320px"> <img src="./img/system2.jpg" height="320px">  
 
 
 # DEMO
@@ -15,8 +15,7 @@
 
 ## QGISを用いた段差マップ  
 出力された[CSVファイル](./src/DataEditor/output/output.csv)を[QGIS](https://qgis.org/ja/site/index.html)により可視化することが可能です．  
-<img src="./img/gyro1.png" width="500px">  
-<img src="./img/gyro2.png" width="500px">   
+<img src="./img/map.png" width="500px">    
 
 
 # S/W
@@ -32,10 +31,11 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 下記のプログラムはM5Stack社の[サンプルプログラム](https://github.com/m5stack/M5Stack/blob/master/examples/Modules/GPS_NEO_M8N/FullExample/FullExample.ino)を参考にしております．  
 * [ソースプログラム](./src/DataLogger/main/main.ino)  
 * 出力ファイル例    
-    * [北九州 洞海湾](./src/DataEditor/input/data_20220515.csv)
-    * [北九州市八幡西区～戸畑区～門司区](./src/DataEditor/input/data_20220522.csv)  
+    * [北九州市 洞海湾 湾岸部](./src/DataEditor/input/data_20220515.csv)
+    * [北九州市 八幡西～八幡東～戸畑～小倉北～門司](./src/DataEditor/input/data_20220522.csv)  
+    * [北九州市～中間市～直方市](./src/DataEditor/input/data_20220529.csv)  
 
-※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)を参照ください．
+※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)でご確認ください．
 
 ## Data Editor (Python)
 上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回の計測データを一つのCSVファイルとして統合します．加えて，ブラウザ上での段差マップの閲覧を目的として，Foliumライブラリを活用したHTMLファイルの自動作成機能を実装しています．  
