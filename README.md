@@ -33,7 +33,8 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 * 出力ファイル例    
     * [北九州市 洞海湾 湾岸部](./src/DataEditor/input/data_20220515.csv)
     * [北九州市 八幡西～八幡東～戸畑～小倉北～門司](./src/DataEditor/input/data_20220522.csv)  
-    * [北九州市～中間市～直方市](./src/DataEditor/input/data_20220529.csv)  
+    * [北九州市～中間市～直方市](./src/DataEditor/input/data_20220529.csv)
+    * [北九州市 学研都市 中央環状ルート左回り](./src/DataEditor/input/data_20220604.csv)  
 
 ※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)でご確認ください．
 
