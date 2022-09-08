@@ -27,10 +27,10 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 なお，下記のプログラムはM5Stack社の[サンプルプログラム](https://github.com/m5stack/M5Stack/blob/master/examples/Modules/GPS_NEO_M8N/FullExample/FullExample.ino)を参考にしております．  
 * [ソースプログラム](./src/DataLogger/main/main.ino)  
 * 出力ファイル例    
-    * [北九州市 洞海湾 湾岸部](./src/DataEditor/input/data_20220515.csv)
-    * [北九州市 八幡西～八幡東～戸畑～小倉北～門司](./src/DataEditor/input/data_20220522.csv)  
-    * [北九州市～中間市～直方市](./src/DataEditor/input/data_20220529.csv)
-    * [北九州市 学研都市 中央環状ルート左回り](./src/DataEditor/input/data_20220604.csv)  
+    * [北九州市 洞海湾 湾岸部](./src/DataEditor/_input/data_20220515.csv)
+    * [北九州市 八幡西～八幡東～戸畑～小倉北～門司](./src/DataEditor/_input/data_20220522.csv)  
+    * [北九州市～中間市～直方市](./src/DataEditor/_input/data_20220529.csv)
+    * [北九州市 学研都市 中央環状ルート左回り](./src/DataEditor/_input/data_20220604.csv)  
 
 ※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)をご確認ください．
 
@@ -38,8 +38,8 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回の計測データを一つのCSVファイルとして統合します．加えて，ブラウザ上でのRoViマップの閲覧を目的として，Foliumライブラリを活用したHTMLファイルの自動作成機能を実装しています．  
 * [ソースプログラム](./src/DataLogger/main/main.ino) 
 * 出力ファイル例
-    * [CSVファイル](./src/DataEditor/output/output.csv)  
-    * [HTMLファイル](./src/DataEditor/output/index.html) 
+    * [CSVファイル](./src/DataEditor/_output/output.csv)  
+    * [HTMLファイル](./src/DataEditor/_output/index.html) 
 
 # H/W
 ## Parts List
