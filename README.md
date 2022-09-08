@@ -23,8 +23,9 @@
 * [Folium](https://python-visualization.github.io/folium/)
 
 ## Data Logger (Arduino)
-GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐次(0.1秒毎)書き込みます．  
-下記のプログラムはM5Stack社の[サンプルプログラム](https://github.com/m5stack/M5Stack/blob/master/examples/Modules/GPS_NEO_M8N/FullExample/FullExample.ino)を参考にしております．  
+GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐次(0.1秒毎)書き込みます． 
+また，ボタン押下により段差もしくは除草要請の地点の手動記録が可能です．
+なお，下記のプログラムはM5Stack社の[サンプルプログラム](https://github.com/m5stack/M5Stack/blob/master/examples/Modules/GPS_NEO_M8N/FullExample/FullExample.ino)を参考にしております．  
 * [ソースプログラム](./src/DataLogger/main/main.ino)  
 * 出力ファイル例    
     * [北九州市 洞海湾 湾岸部](./src/DataEditor/input/data_20220515.csv)
@@ -39,10 +40,7 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 * [ソースプログラム](./src/DataLogger/main/main.ino) 
 * 出力ファイル例
     * [CSVファイル](./src/DataEditor/output/output.csv)  
-    * [HTMLファイル](./src/DataEditor/output/index.html)
-
-## Data Viewer (Python)
-段差マップの閲覧のみを目的としたプログラムです(開発中)．  
+    * [HTMLファイル](./src/DataEditor/output/index.html) 
 
 # H/W
 ## Parts List
