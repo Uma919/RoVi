@@ -23,7 +23,7 @@ RoViマップはHTMLファイルとして出力されるため，ブラウザ上
 
 ## Data Logger (Arduino)
 GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐次(0.1秒毎)書き込みます． 
-また，ボタン押下により段差もしくは除草要請の地点の手動記録が可能です．
+また，ボタン押下により段差地点・除草要請地点の手動記録が可能です．
 なお，下記のプログラムはM5Stack社の[サンプルプログラム](https://github.com/m5stack/M5Stack/blob/master/examples/Modules/GPS_NEO_M8N/FullExample/FullExample.ino)を参考にしております．  
 * [ソースプログラム](./src/DataLogger/main/main.ino)  
 * 出力ファイル例    
