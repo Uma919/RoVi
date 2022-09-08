@@ -10,7 +10,7 @@
 # DEMO
 ## Foliumを用いたRoViマップ
 RoViマップはHTMLファイルとして出力されるため，ブラウザ上での閲覧が可能です．  
-[コチラ](https://uma919.github.io/MMS-Cycle-Demo/)からご覧いただけます．
+[コチラ](https://uma919.github.io/RoVi-Demo/)からご覧いただけます．
   
   
 # S/W
