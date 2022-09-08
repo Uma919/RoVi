@@ -94,15 +94,11 @@ if __name__ == '__main__':
 
     for pnt in rep_pnt:
         if pnt[2] == "step":
-            folium.Marker(
-                        location=[pnt[1],pnt[0]],
-                        popup=pnt[2],
-                        icon=folium.Icon(color="red", icon="info-sign"),
-                        ).add_to(map)
+            folium.Marker(location=[pnt[1],pnt[0]],
+                          popup=pnt[2],
+                          icon=folium.Icon(color="red", icon="info-sign")).add_to(map)
         elif pnt[2] == "grass":
-            folium.Marker(
-                        location=[pnt[1], pnt[0]],
-                        popup=pnt[2],
-                        icon=folium.Icon(color="green", icon="info-sign"),
-                        ).add_to(map)
+            folium.Marker(location=[pnt[1], pnt[0]],
+                          popup=pnt[2],
+                          icon=folium.Icon(color="green", icon="info-sign")).add_to(map)
     map.save(output_html_path)
