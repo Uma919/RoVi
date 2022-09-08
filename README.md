@@ -11,7 +11,7 @@
 # DEMO
 ## Foliumを用いたRoViマップ
 RoViマップはHTMLファイルとして出力されるため，ブラウザ上での閲覧が可能です．  
-[コチラ](https://uma919.github.io/MMS-Cycle-Demo/)でご覧いただけます．
+[コチラ](https://uma919.github.io/MMS-Cycle-Demo/)からご覧いただけます．
   
   
 # S/W
@@ -33,7 +33,7 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
     * [北九州市～中間市～直方市](./src/DataEditor/input/data_20220529.csv)
     * [北九州市 学研都市 中央環状ルート左回り](./src/DataEditor/input/data_20220604.csv)  
 
-※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)でご確認ください．
+※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)をご確認ください．
 
 ## Data Editor (Python)
 上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回の計測データを一つのCSVファイルとして統合します．加えて，ブラウザ上でのRoViマップの閲覧を目的として，Foliumライブラリを活用したHTMLファイルの自動作成機能を実装しています．  
