@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
     # RoViマップファイル作成 #
     output_html_path = getPath('../output/index.html')
-    map = folium.Map(location=[33.8669161, 130.7669116], zoom_start=11)
+    map = folium.Map(location=[33.8811154,130.7109263], zoom_start=14)
     HeatMap(stp_pnt, 
             min_opacity=0.5, 
             radius=3, 
@@ -93,12 +93,13 @@ if __name__ == '__main__':
             gradient={0.2:'blue', 0.4:'lime', 0.6:'yellow', 0.8:'red'}).add_to(map)
 
     for pnt in rep_pnt:
+        print(pnt[2])
         if pnt[2] == "step":
-            folium.Marker(location=[pnt[1],pnt[0]],
+            folium.Marker(location=[pnt[0],pnt[1]],
                           popup=pnt[2],
                           icon=folium.Icon(color="red", icon="info-sign")).add_to(map)
         elif pnt[2] == "grass":
-            folium.Marker(location=[pnt[1], pnt[0]],
+            folium.Marker(location=[pnt[0], pnt[1]],
                           popup=pnt[2],
                           icon=folium.Icon(color="green", icon="info-sign")).add_to(map)
     map.save(output_html_path)
