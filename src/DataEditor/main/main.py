@@ -65,7 +65,7 @@ if __name__ == '__main__':
     output_repo_csv_path = getPath('../output/output_report.csv')
     with open(output_repo_csv_path, 'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(['Lng[deg]', 'Lat[deg]', 'Details'])
+        writer.writerow(['Lat[deg]', 'Lng[deg]', 'Details'])
 
     rep_pnt = []
     input_repo_csv_path = getPath('../input/repo_*.csv')
@@ -93,13 +93,12 @@ if __name__ == '__main__':
             gradient={0.2:'blue', 0.4:'lime', 0.6:'yellow', 0.8:'red'}).add_to(map)
 
     for pnt in rep_pnt:
-        print(pnt[2])
         if pnt[2] == "step":
-            folium.Marker(location=[pnt[0],pnt[1]],
+            folium.Marker(location=pnt[:2],
                           popup=pnt[2],
                           icon=folium.Icon(color="red", icon="info-sign")).add_to(map)
         elif pnt[2] == "grass":
-            folium.Marker(location=[pnt[0], pnt[1]],
+            folium.Marker(location=pnt[:2],
                           popup=pnt[2],
                           icon=folium.Icon(color="green", icon="info-sign")).add_to(map)
     map.save(output_html_path)
