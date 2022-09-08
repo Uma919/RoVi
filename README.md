@@ -9,8 +9,8 @@
 
 
 # DEMO
-## Foliumを用いた段差マップ
-段差マップはHTMLファイルとして出力されるため，ブラウザ上での閲覧が可能です．  
+## Foliumを用いたRoViマップ
+RoViマップはHTMLファイルとして出力されるため，ブラウザ上での閲覧が可能です．  
 [コチラ](https://uma919.github.io/MMS-Cycle-Demo/)でご覧いただけます．
   
   
@@ -36,7 +36,7 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 ※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)でご確認ください．
 
 ## Data Editor (Python)
-上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回の計測データを一つのCSVファイルとして統合します．加えて，ブラウザ上での段差マップの閲覧を目的として，Foliumライブラリを活用したHTMLファイルの自動作成機能を実装しています．  
+上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回の計測データを一つのCSVファイルとして統合します．加えて，ブラウザ上でのRoViマップの閲覧を目的として，Foliumライブラリを活用したHTMLファイルの自動作成機能を実装しています．  
 * [ソースプログラム](./src/DataLogger/main/main.ino) 
 * 出力ファイル例
     * [CSVファイル](./src/DataEditor/output/output.csv)  
