@@ -77,7 +77,7 @@ if __name__ == '__main__':
             for r in reader:
                 rep_pnt.append(r)
 
-        # 内挿と出力用CSV書込み #
+        # 出力用CSV書込み #
         with open(output_repo_csv_path, 'a', newline="") as f:
             writer = csv.writer(f)
             for l in rep_pnt:
