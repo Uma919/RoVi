@@ -14,7 +14,7 @@ if __name__ == '__main__':
     output_sens_csv_path = getPath('../output/output_sensor.csv')
     with open(output_sens_csv_path, 'w', newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(['Lng[deg]', 'Lat[deg]', 'AccX', 'AccY', 'AccZ', 'GyroX', 'GyroY', 'GyroZ'])
+        writer.writerow(['Lat[deg]', 'Lng[deg]', 'AccX', 'AccY', 'AccZ', 'GyroX', 'GyroY', 'GyroZ'])
 
     input_sens_csv_path = getPath('../input/sens_*.csv')
     sens_csv_files = glob.glob(input_sens_csv_path) #入力フォルダ内ファイルパスの取得
@@ -43,23 +43,23 @@ if __name__ == '__main__':
                         for j, e in enumerate(l[1]):
                             x = float(l[0][1]) + (j * x_dt)
                             y = float(l[0][0]) + ((float(loc_lst[i+1][0][0]) - float(l[0][0])) * (x - float(l[0][1])) / (float(loc_lst[i+1][0][1]) - float(l[0][1])))
-                            e[0] = x
-                            e[1] = y
+                            e[0] = y
+                            e[1] = x
                             writer.writerow(e)
                     else:
                         y_dt = (float(loc_lst[i+1][0][0]) - float(l[0][0]))/len(l[1])
                         for j, e in enumerate(l[1]):
                             x = float(l[0][1])
                             y = float(l[0][0]) + (j * y_dt)
-                            e[0] = x
-                            e[1] = y
+                            e[0] = y
+                            e[1] = x
                             writer.writerow(e)
     
     stp_pnt = []
     with open(output_sens_csv_path) as f:
         reader = csv.reader(f)
         header = next(reader)
-        stp_pnt = [[float(r[1]), float(r[0]), abs(float(r[5]))] for r in reader if abs(float(r[5])) >= 130]
+        stp_pnt = [[float(r[0]), float(r[1]), abs(float(r[5]))] for r in reader if abs(float(r[5])) >= 130]
     
     #/ 道路異常データ用出力CSV作成 /#
     output_repo_csv_path = getPath('../output/output_report.csv')
