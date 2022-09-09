@@ -41,7 +41,7 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 
 ## Data Editor (Python)
 上記Data Loggerにおいて緯度経度(1s)と角速度(100ms)の取得間隔の差異が伴うため，緯度経度について内挿を施します．また，[入力ファイル用フォルダ](./src/DataEditor/input/)内の複数回計測データのCSVファイルを一つのCSVファイルとして統合します．加えて，ブラウザ上でのRoViマップの閲覧を目的として，Foliumライブラリを活用したHTMLファイルの自動作成機能を実装しています．  
-* [ソースプログラム](./src/DataLogger/main/main.ino) 
+* [ソースプログラム](./src/DataEditor/main/main.py) 
 * 出力ファイル例
     * [慣性計測データ](./src/DataEditor/output/output_sensor.csv)
     * [手動記録データ](./src/DataEditor/output/output_report.csv)  
