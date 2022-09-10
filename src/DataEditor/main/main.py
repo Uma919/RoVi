@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
     # RoViマップファイル作成 #
     output_html_path = getPath('../output/index.html')
-    map = folium.Map(location=[33.8811154,130.7109263], zoom_start=14)
+    map = folium.Map(location=[33.8802604,130.7087805], zoom_start=13)
     HeatMap(stp_pnt, 
             min_opacity=0.5, 
             radius=3, 
