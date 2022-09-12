@@ -16,12 +16,11 @@ if __name__ == '__main__':
         writer = csv.writer(f)
         writer.writerow(['Lat[deg]', 'Lng[deg]', 'AccX', 'AccY', 'AccZ', 'GyroX', 'GyroY', 'GyroZ'])
 
+    #/ 入力CSV読込みとデータ整形 /#
+    loc_lst = []
     input_sens_csv_path = getPath('../input/sens_*.csv')
     sens_csv_files = glob.glob(input_sens_csv_path) #入力フォルダ内ファイルパスの取得
     for csv_file in sens_csv_files:
-        loc_lst = []
-
-        # 入力CSV読込みとデータ整形 #
         with open(csv_file) as f:
             reader = csv.reader(f)
             for i, r in enumerate(reader):
@@ -32,29 +31,30 @@ if __name__ == '__main__':
                 else:
                     loc_lst.append([r[:2], [r]])
 
-        # 内挿と出力用CSV書込み #
-        with open(output_sens_csv_path, 'a', newline="") as f:
-            writer = csv.writer(f)
-            idx_end = len(loc_lst) - 1
-            for i, l in enumerate(loc_lst):
-                if i != idx_end:
-                    if float(loc_lst[i+1][0][1]) - float(l[0][1]) != 0:
-                        x_dt = (float(loc_lst[i+1][0][1]) - float(l[0][1]))/len(l[1])
-                        for j, e in enumerate(l[1]):
-                            x = float(l[0][1]) + (j * x_dt)
-                            y = float(l[0][0]) + ((float(loc_lst[i+1][0][0]) - float(l[0][0])) * (x - float(l[0][1])) / (float(loc_lst[i+1][0][1]) - float(l[0][1])))
-                            e[0] = y
-                            e[1] = x
-                            writer.writerow(e)
-                    else:
-                        y_dt = (float(loc_lst[i+1][0][0]) - float(l[0][0]))/len(l[1])
-                        for j, e in enumerate(l[1]):
-                            x = float(l[0][1])
-                            y = float(l[0][0]) + (j * y_dt)
-                            e[0] = y
-                            e[1] = x
-                            writer.writerow(e)
+    #/ 内挿と出力用CSV書込み /#
+    with open(output_sens_csv_path, 'a', newline="") as f:
+        writer = csv.writer(f)
+        idx_end = len(loc_lst) - 1
+        for i, l in enumerate(loc_lst):
+            if i != idx_end:
+                if float(loc_lst[i+1][0][1]) - float(l[0][1]) != 0:
+                    x_dt = (float(loc_lst[i+1][0][1]) - float(l[0][1]))/len(l[1])
+                    for j, e in enumerate(l[1]):
+                        x = float(l[0][1]) + (j * x_dt)
+                        y = float(l[0][0]) + ((float(loc_lst[i+1][0][0]) - float(l[0][0])) * (x - float(l[0][1])) / (float(loc_lst[i+1][0][1]) - float(l[0][1])))
+                        e[0] = y
+                        e[1] = x
+                        writer.writerow(e)
+                else:
+                    y_dt = (float(loc_lst[i+1][0][0]) - float(l[0][0]))/len(l[1])
+                    for j, e in enumerate(l[1]):
+                        x = float(l[0][1])
+                        y = float(l[0][0]) + (j * y_dt)
+                        e[0] = y
+                        e[1] = x
+                        writer.writerow(e)
     
+    #/ 段差抽出 /#
     stp_pnt = []
     with open(output_sens_csv_path) as f:
         reader = csv.reader(f)
@@ -67,23 +67,23 @@ if __name__ == '__main__':
         writer = csv.writer(f)
         writer.writerow(['Lat[deg]', 'Lng[deg]', 'Details'])
 
+    #/ 入力CSV読込み /#
     rep_pnt = []
     input_repo_csv_path = getPath('../input/repo_*.csv')
     repo_csv_files = glob.glob(input_repo_csv_path) #入力フォルダ内ファイルパスの取得
     for csv_file in repo_csv_files:
-        # 入力CSV読込み #
         with open(csv_file) as f:
             reader = csv.reader(f)
             for r in reader:
                 rep_pnt.append(r)
 
-        # 出力用CSV書込み #
-        with open(output_repo_csv_path, 'a', newline="") as f:
-            writer = csv.writer(f)
-            for l in rep_pnt:
-                writer.writerow(l)
+    #/ 出力用CSV書込み /#
+    with open(output_repo_csv_path, 'a', newline="") as f:
+        writer = csv.writer(f)
+        for l in rep_pnt:
+            writer.writerow(l)
 
-    # RoViマップファイル作成 #
+    #/ RoViマップ作成 /#
     output_html_path = getPath('../output/index.html')
     map = folium.Map(location=[33.8802604,130.7087805], zoom_start=13)
     HeatMap(stp_pnt, 
