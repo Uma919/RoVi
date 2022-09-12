@@ -18,6 +18,7 @@ RoViマップはHTMLファイルとして出力されるため，ブラウザ上
 <img src="img/img_feature.png" width="320">  
 
 参考までにGISソフトウェア「QGIS」を用いてピッチ角方向の角加速度データをマッピングした結果は下記の通りです．  
+
 <img src="img/img_qgis.png" width="640">  
 
 # System Configuration  
