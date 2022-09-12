@@ -2,17 +2,27 @@
 本リポジトリは道路可視化システムの開発リポジトリです．  
 段差等の地理空間情報の収集および可視化を目的としています．  
 自転車走行による道路の路面状態の自動計測やボタン押下による段差地点・除草要請地点の手動記録を実現しました．  
-なお，本コンテンツを利用して生じた損害について一切保証いたしかねます．予めご了承いただきますようお願い申し上げます．
+なお，本コンテンツを利用して生じた損害について一切保証いたしかねます．予めご了承いただきますようお願い申し上げます．  
 
-<img src="./img/system1.jpg" height="320px"> <img src="./img/system2.jpg" height="320px">  
+紹介動画は下記サムネイルをクリック！  
 
+[![](https://img.youtube.com/vi/1G20O3Ob4_k/0.jpg)](https://www.youtube.com/watch?v=1G20O3Ob4_k)
 
-# DEMO
-## Foliumを用いたRoViマップ
+# DEMO (RoViマップ)
 RoViマップはHTMLファイルとして出力されるため，ブラウザ上での閲覧が可能です．  
-[コチラ](https://uma919.github.io/RoVi-Demo/)からご覧いただけます．
+[コチラ](https://uma919.github.io/RoVi-Demo/)からご覧いただけます．  
+<img src="img/img_map.png" width="460">  
   
-  
+# Features
+段差情報の収集において，自転車を使用することにしました．自転車は当然ながら路面と常時接地しており，その路面状態に応じた振動が伝わるためです．段差判定についてはピッチ角方向の回転により評価しました．  
+<img src="img/img_feature.png" width="320">  
+
+参考までにGISソフトウェア「QGIS」を用いてピッチ角方向の角加速度データをマッピングした結果は下記の通りです．
+<img src="img/img_qgis.png" width="460">  
+
+# System Configuration  
+<img src="img/img_sysconfig.png" width="460">
+
 # S/W
 ## Requirement
 ### Arduino
@@ -28,14 +38,22 @@ GNSS(GPS)より得られる位置情報や慣性情報をCSVファイルに逐�
 * [ソースプログラム](./src/DataLogger/main/main.ino)  
 * 出力ファイル(新仕様)
     * 慣性計測データ
-        * [北九州市　浅川・折尾・本城西](./src/DataEditor/input/sens_063625.csv)
+        * [内環状ルート　北九州市](./src/DataEditor/input/sens_063625.csv)
+        * [外環状ルート　北九州市・遠賀郡水巻町](./src/DataEditor/input/sens_190754.csv)
+        * [本城～ひびきの　北九州市](./src/DataEditor/input/sens_204442.csv)
+        * [ひびきの～水巻　北九州市・遠賀郡水巻町](./src/DataEditor/input/sens_211949.csv)
+        * [折尾～浅川　北九州市](./src/DataEditor/input/sens_220312.csv)
     * 手動記録データ
-        * [北九州市　浅川・折尾・本城西](./src/DataEditor/input/repo_063625.csv)
+        * [内環状ルート　北九州市](./src/DataEditor/input/repo_063625.csv)
+        * [外環状ルート　北九州市・遠賀郡水巻町](./src/DataEditor/input/repo_190754.csv)
+        * [本城～ひびきの　北九州市](./src/DataEditor/input/repo_204442.csv)
+        * [ひびきの～水巻　北九州市・遠賀郡水巻町](./src/DataEditor/input/repo_211949.csv)
+        * [折尾～浅川　北九州市](./src/DataEditor/input/repo_220312.csv)
 * 出力ファイル(旧仕様)    
     * [北九州市 洞海湾 湾岸部](./src/DataEditor/_input/data_20220515.csv)
     * [北九州市 八幡西～八幡東～戸畑～小倉北～門司](./src/DataEditor/_input/data_20220522.csv)  
     * [北九州市～中間市～直方市](./src/DataEditor/_input/data_20220529.csv)
-    * [北九州市 学研都市 中央環状ルート左回り](./src/DataEditor/_input/data_20220604.csv)  
+    * [北九州市 学研都市 環状ルート](./src/DataEditor/_input/data_20220604.csv)  
 
 ※ヘッダ情報は書き込みまないようにしているため，[ソースプログラム](./src/DataLogger/main/main.ino)をご確認ください．
 
