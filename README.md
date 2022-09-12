@@ -11,16 +11,16 @@
 # DEMO (RoViマップ)
 RoViマップはHTMLファイルとして出力されるため，ブラウザ上での閲覧が可能です．  
 [コチラ](https://uma919.github.io/RoVi-Demo/)からご覧いただけます．  
-<img src="img/img_map.png" width="460">  
+<img src="img/img_map.png" width="480">  
   
 # Features
 段差情報の収集において，自転車を使用することにしました．自転車は当然ながら路面と常時接地しており，その路面状態に応じた振動が伝わるためです．段差判定についてはピッチ角方向の回転により評価しました．  
-<img src="img/img_feature.png" width="320">  
+<img src="img/img_feature.jpg" width="320">  
 参考までにGISソフトウェア「QGIS」を用いてピッチ角方向の角加速度データをマッピングした結果は下記の通りです．  
-<img src="img/img_qgis.png" width="640">  
+<img src="img/img_qgis.jpg" width="480">  
 
 # System Configuration  
-<img src="img/img_sysconfig.png" width="460">
+<img src="img/img_sysconfig.jpg" width="480">
 
 # S/W
 ## Requirement
